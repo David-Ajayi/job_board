@@ -21,7 +21,9 @@ Route::get('/', function () {
 
 Route::get('/jobs', function () {
     return view('jobs', [
-        'jobs' => Job::all()
+        'jobs' => Job::all(),
+        'categories' => Category::all()
+
     ]);
 
 });
@@ -38,9 +40,11 @@ Route::get('/jobs/{job:id}', function (Job $job) {
 });
 
 
-Route::get('/categories/{category:id}', function (Category $category) {
+Route::get('/categories/{category:name}', function (Category $category) {
     return view('jobs', [
-        'jobs' => $category->jobs
+        'jobs' => $category->jobs,
+        'categories' => Category::all(),
+        'currentCategory' => $category
     ]);
 
 });
