@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Job;
 use App\Models\Category;
+use App\Models\Company;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +47,14 @@ Route::get('/categories/{category:name}', function (Category $category) {
         'jobs' => $category->jobs,
         'categories' => Category::all(),
         'currentCategory' => $category
+    ]);
+
+});
+Route::get('companies/{company:id}', function (Company $company) {
+//dd($company);
+    return view('jobs', [
+        'jobs' => $company->jobs,
+         'categories' => Category::all(),
     ]);
 
 });
