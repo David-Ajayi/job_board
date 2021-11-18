@@ -17,12 +17,16 @@ class CreateJobsTable extends Migration
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('category_id');
+            $table->foreignId('company_id');
+            $table->string('slug')->unique();
             $table->string('title');
-            $table->text('description');
-            $table->string('company');
+            $table->text('short_description');
+            $table->text('full_description');
             $table->string('salary');
             $table->string('location');
             $table->timestamps();
+            $table->timestamp('posted_at')->nullable();
+
         });
     }
 

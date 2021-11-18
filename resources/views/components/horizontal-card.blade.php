@@ -35,7 +35,7 @@
 
             <div class="text-sm mt-2">
                 <p>
-                    {{$job->description}}
+                    {{$job->short_desciption}}
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                     ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
                     ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -50,8 +50,8 @@
                 <div class="flex items-center text-sm">
                     <img src="/images/lary-avatar.svg" alt="Lary avatar">
                     <div class="ml-3">
-                        <h5 class="font-bold">{{$job->company}}</h5>
-                        <h6>Mascot at Laracasts</h6>
+                        <h5 class="font-bold">{{$job->location}}</h5>
+                        <h6>{{$job->company->name}}</h6>
                     </div>
                 </div>
 
