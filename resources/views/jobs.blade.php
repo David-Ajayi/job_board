@@ -21,15 +21,15 @@
 
 
         <div class="lg:grid lg:grid-cols-2">
-            <x-grid-card/>
-            <x-grid-card/>
+{{--            <x-grid-card/>--}}
+{{--            <x-grid-card/>--}}
 
 
 
         </div>
 
         <div class="lg:grid lg:grid-cols-3">
-            <x-grid-card/>
+{{--            <x-grid-card/>--}}
 
 
 
