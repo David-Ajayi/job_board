@@ -11,6 +11,14 @@ class Job extends Model
 
     protected $guarded = [];
 
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['search'] ?? false, fn($query, $search) =>
+        $query
+            ->where('title', 'like', '%' . $search . '%')
+            ->orWhere('full_description', 'like', '%' . $search . '%'));
+    }
+
     public function category()
     {
 
