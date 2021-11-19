@@ -9,7 +9,7 @@ use App\Models\Job;
 
 class JobController extends Controller
 {
-    public function index()
+    public function home()
     {
         //dd(request(['search']));
         return view('home', [
@@ -18,21 +18,21 @@ class JobController extends Controller
             'categories' => Category::all()
         ]);
     }
-    public function jobs()
+    public function index()
     {
 //        dd(request(['search']));
-        return view('jobs', [
+        return view('jobs.index', [
 //            'jobs' => Job::all(),
             'jobs' => Job::latest()->filter(request(['search', 'category']))->get(),
 
 
-            'categories' => Category::all()
+//            'categories' => Category::all()
         ]);
     }
 
     public function show(Job $job)
     {
-        return view('job', [
+        return view('job.show', [
             'job' => $job
         ]);
     }

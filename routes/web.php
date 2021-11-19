@@ -18,12 +18,12 @@ use App\Models\Company;
 |
 */
 //Route::get('/', [JobController::class, 'index'])->name('home');
-Route::get('/', [JobController::class, 'index'])->name('home');
+Route::get('/', [JobController::class, 'home']);
 //Route::get('/', function () {
 //    return view('welcome');
 //});
 
-Route::get('/jobs', [JobController::class, 'jobs'])->name('home');
+Route::get('/jobs', [JobController::class, 'index'])->name('home');
 //    return view('jobs', [
 //        'jobs' => Job::all(),
 //        'categories' => Category::all()
@@ -50,7 +50,7 @@ Route::get('companies/{company:name}', function (Company $company) {
 //dd($company);
     return view('jobs', [
         'jobs' => $company->jobs,
-         'categories' => Category::all(),
+//         'categories' => Category::all(),
     ]);
 
 });

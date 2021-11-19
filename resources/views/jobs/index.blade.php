@@ -1,5 +1,5 @@
 <x-layout>
-    @include ('_jobs-header')
+    @include ('jobs._header')
 
 
 

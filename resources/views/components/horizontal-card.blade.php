@@ -36,9 +36,6 @@
             <div class="text-sm mt-2">
                 <p>
                     {{$job->short_desciption}}
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
                 </p>
 
                 <p class="mt-4">
