@@ -46,14 +46,14 @@ Route::get('jobs/{job:slug}', [JobController::class, 'show']);
 
 
 
-Route::get('companies/{company:name}', function (Company $company) {
-//dd($company);
-    return view('jobs', [
-        'jobs' => $company->jobs,
-//         'categories' => Category::all(),
-    ]);
-
-});
+//Route::get('companies/{company:name}', function (Company $company) {
+////dd($company);
+//    return view('jobs.index', [
+//        'jobs' => $company->jobs,
+////         'categories' => Category::all(),
+//    ]);
+//
+//});
 
 //Route::get('/categories/{category:name}', function (Category $category) {
 //    return view('jobs', [

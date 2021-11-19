@@ -42,11 +42,22 @@ class Job extends Model
         $query
             ->where('title', 'like', '%' . $search . '%')
             ->orWhere('full_description', 'like', '%' . $search . '%'));
+
+
         $query->when($filters['category'] ?? false, fn($query, $category) =>
         $query->whereHas('category', fn ($query) =>
         $query->where('slug', $category)
         )
         );
+
+
+        $query->when($filters['company'] ?? false, fn($query, $company) =>
+        $query->whereHas('company', fn ($query) =>
+        $query->where('name', $company)
+        )
+        );
+
+        //give me the jobs that have a company that match the $company name passed through
     }
 
     public function category()
