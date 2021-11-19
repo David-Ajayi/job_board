@@ -12,9 +12,10 @@ class JobController extends Controller
 
     public function index()
     {
+//        dd(request(['search']));
         return view('jobs', [
-//            'jobs' => Job::all()->filter(request(['search']))->get(),
-            'jobs' => Job::all()->filter->get(),
+//            'jobs' => Job::all(),
+            'jobs' => Job::latest()->filter(request(['search']))->get(),
             'categories' => Category::all()
         ]);
     }
