@@ -38,10 +38,10 @@
 
                     {{--                    binding these options to x-data if truthy then show links options otherwise don't--}}
                     @foreach($categories as $category)
-                        <a href="/categories/{{$category->name}}"
+                        <a href="/jobs/?category={{$category->slug}}"
                            class="block text-left px-3 text-s leading-6
                     hover:bg-blue-500 focus:bg-blue-500 hover:text-white focus:text-white
-                     {{isset($currentCategory) && $currentCategory->id ===$category->id ? 'bg-blue-500 hover:text-white' : ''}}
+                     {{isset($currentCategory) && $currentCategory->slug ===$category->slug ? 'bg-blue-500 hover:text-white' : ''}}
                                "
                         >{{ucwords($category->name)}}</a>
 

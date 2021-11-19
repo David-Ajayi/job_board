@@ -18,11 +18,12 @@ use App\Models\Company;
 |
 */
 //Route::get('/', [JobController::class, 'index'])->name('home');
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [JobController::class, 'index'])->name('home');
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
-Route::get('/jobs', [JobController::class, 'index'])->name('home');
+Route::get('/jobs', [JobController::class, 'jobs'])->name('home');
 //    return view('jobs', [
 //        'jobs' => Job::all(),
 //        'categories' => Category::all()
@@ -44,14 +45,7 @@ Route::get('jobs/{job:slug}', [JobController::class, 'show']);
 //});
 
 
-Route::get('/categories/{category:name}', function (Category $category) {
-    return view('jobs', [
-        'jobs' => $category->jobs,
-        'categories' => Category::all(),
-        'currentCategory' => $category
-    ]);
 
-});
 Route::get('companies/{company:name}', function (Company $company) {
 //dd($company);
     return view('jobs', [
@@ -60,3 +54,12 @@ Route::get('companies/{company:name}', function (Company $company) {
     ]);
 
 });
+
+//Route::get('/categories/{category:name}', function (Category $category) {
+//    return view('jobs', [
+//        'jobs' => $category->jobs,
+//        'categories' => Category::all(),
+//        'currentCategory' => $category
+//    ]);
+//
+//});

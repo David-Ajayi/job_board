@@ -11,8 +11,11 @@
 
 
 
+
         @endforeach
+{{--            {{ $jobs->links() }}--}}
         @else
+
             <p class="text-center">No Job postings to display</p>
 
 
