@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\RegisterController;
 use App\Models\Job;
 use App\Models\Category;
 use App\Models\Company;
@@ -63,3 +64,6 @@ Route::get('jobs/{job:slug}', [JobController::class, 'show']);
 //    ]);
 //
 //});
+Route::get('register', [RegisterController::class, 'create']);
+    //->middleware('guest');
+Route::post('register', [RegisterController::class, 'store']);
