@@ -38,10 +38,17 @@ class Job extends Model
 
     public function scopeFilter($query, array $filters)
     {
+//        $query->when($filters['search'] ?? false, fn($query, $search) =>
+//        $query
+//            ->where('title', 'like', '%' . $search . '%') HAS A SMALL BUG WHERE QUERY RETURN MULTIPLE CATEGORIES WHEN SHOULD ONLY RETURN ONE
+//            ->orWhere('full_description', 'like', '%' . $search . '%'));
+
         $query->when($filters['search'] ?? false, fn($query, $search) =>
-        $query
-            ->where('title', 'like', '%' . $search . '%')
-            ->orWhere('full_description', 'like', '%' . $search . '%'));
+        $query->where(fn($query) =>
+        $query->where('title', 'like', '%' . $search . '%')
+            ->orWhere('full_description', 'like', '%' . $search . '%')
+        )
+        );
 
 
         $query->when($filters['category'] ?? false, fn($query, $category) =>
