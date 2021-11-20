@@ -23,7 +23,7 @@ class JobController extends Controller
 //        dd(request(['search']));
         return view('jobs.index', [
 //            'jobs' => Job::all(),
-            'jobs' => Job::latest()->filter(request(['search', 'category', 'company']))->get(),
+            'jobs' => Job::latest()->filter(request(['search', 'category', 'company']))->paginate(3)->withQueryString()
 
 
 //            'categories' => Category::all()

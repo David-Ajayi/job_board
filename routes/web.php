@@ -23,7 +23,7 @@ Route::get('/', [JobController::class, 'home']);
 //    return view('welcome');
 //});
 
-Route::get('/jobs', [JobController::class, 'index'])->name('home');
+Route::get('/jobs', [JobController::class, 'index'])->name('index');
 //    return view('jobs', [
 //        'jobs' => Job::all(),
 //        'categories' => Category::all()

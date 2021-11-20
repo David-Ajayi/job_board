@@ -22,6 +22,7 @@
 
                 </x-slot>
 
+
 {{--php http build query function takes in an array and builds a query string so[name=>joh] changes to
 name=john. [name=>john, pet=>dog] changes to name=john&pet=dog essentialu builds a query string--}}
 
@@ -31,7 +32,7 @@ name=john. [name=>john, pet=>dog] changes to name=john&pet=dog essentialu builds
 {{--                        <a href="/jobs/?category={{$category->slug}}"--}}
 {{--                now this works for the reverse if we want to search and then select a category because ethe query string is appended--}}
 {{--                previously if you search then select a category it reverts the query string to search based on selected category only--}}
-                    <a href="/jobs/?category={{$category->slug}} & {{ http_build_query(request()->except('category'))}}"
+                    <a href="/jobs/?category={{$category->slug}} & {{ http_build_query(request()->except('category','page'))}}"
                            class="block text-left px-3 text-s leading-6
                     hover:bg-blue-500 focus:bg-blue-500 hover:text-white focus:text-white
                      {{isset($currentCategory) && $currentCategory->slug ===$category->slug ? 'bg-blue-500 hover:text-white' : ''}}

@@ -13,7 +13,8 @@
 
 
         @endforeach
-{{--            {{ $jobs->links() }}--}}
+            {{ $jobs->links() }}
+{{--            render the pagination links--}}
         @else
 
             <p class="text-center">No Job postings to display</p>
