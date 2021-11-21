@@ -3,7 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
+//2021_11_18_091618
+//2021_11_16_081532
 class CreateCompaniesTable extends Migration
 {
     /**

@@ -67,6 +67,16 @@ class Job extends Model
         //give me the jobs that have a company that match the $company name passed through
     }
 
+    public function comments()
+    {
+
+        return $this-> hasMany(Comment::class);
+
+        //relationships
+
+
+    }
+
     public function category()
     {
 
