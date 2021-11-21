@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SessionsController;
+
 use App\Models\Job;
 use App\Models\Category;
 use App\Models\Company;
@@ -64,6 +66,19 @@ Route::get('jobs/{job:slug}', [JobController::class, 'show']);
 //    ]);
 //
 //});
-Route::get('register', [RegisterController::class, 'create']);
-    //->middleware('guest');
-Route::post('register', [RegisterController::class, 'store']);
+Route::get('register', [RegisterController::class, 'create'])->middleware('guest');;
+//    these routes are only available if you are a guest. middleware handles that
+Route::post('register', [RegisterController::class, 'store'])->middleware('guest');;
+
+Route::get('login', [SessionsController::class, 'create'])->middleware('guest');
+//only guests should be able to login and post to that form
+
+
+//only guests should be able to view the login page. If you are not a guest you should not see the login page
+
+Route::post('login', [SessionsController::class, 'store'])->middleware('guest');
+
+//in order to logout you have to be logged in meaning a guest should never be able to logout
+
+Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');
+
