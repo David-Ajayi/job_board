@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
+use App\Http\Controllers\JobCommentsController;
+
 
 use App\Models\Job;
 use App\Models\Category;
@@ -81,4 +83,6 @@ Route::post('login', [SessionsController::class, 'store'])->middleware('guest');
 //in order to logout you have to be logged in meaning a guest should never be able to logout
 
 Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');
+
+Route::post('jobs/{job:slug}/comments', [JobCommentsController::class, 'store']);
 

@@ -16,6 +16,7 @@
                     <time>{{ $job->created_at->diffForHumans() }}</time>
                 </p>
 
+
                 <div class="flex items-center lg:justify-center text-sm mt-4">
 {{--                    <img src="/images/lary-avatar.svg" alt="Lary avatar">--}}
                     <div class="ml-3 text-left">
@@ -56,7 +57,9 @@
             </div>
 
             <section class="col-span-8 col-start-5 mt-10 space-y-6">
-{{--                <x-job-comment />--}}
+                @include ('jobs._add-comment-form')
+
+                {{--                <x-job-comment />--}}
 {{--                <x-job-comment />--}}
 {{--                <x-job-comment />--}}
                 @foreach ($job->comments as $comment)

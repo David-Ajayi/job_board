@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     use HasFactory;
+    protected $guarded = [];
 
 
     public function job()
@@ -16,6 +17,7 @@ class Comment extends Model
         return $this-> belongsTo(Job::class);
 
         //relationships
+        //return $this->belongsTo(Job::class, 'job_id');
 
 
     }
