@@ -86,3 +86,7 @@ Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth'
 
 Route::post('jobs/{job:slug}/comments', [JobCommentsController::class, 'store']);
 
+
+Route::get('admin/jobs/create', [JobController::class, 'create'])->middleware('admin');;
+Route::post('admin/jobs', [JobController::class, 'store'])->middleware('admin');
+
