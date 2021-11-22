@@ -7,128 +7,18 @@
         <x-panel>
             <form method="POST" action="/admin/jobs" enctype="multipart/form-data">
                 @csrf
-
-                <div class="mb-6">
-                    <label class="block mb-2 uppercase font-bold text-xs text-gray-700"
-                           for="title"
-                    >
-                        Job Title
-                    </label>
-
-                    <input class="border border-gray-400 p-2 w-full"
-                           type="text"
-                           name="title"
-                           id="title"
-                           value="{{ old('title') }}"
-                           required
-                    >
-
-                    @error('title')
-                    <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-                    @enderror
-                </div>
-                <div class="mb-6">
-                    <label class="block mb-2 uppercase font-bold text-xs text-gray-700"
-                           for="salary"
-                    >
-                        Salary
-                    </label>
-
-                    <input class="border border-gray-400 p-2 w-full"
-                           type="text"
-                           name="salary"
-                           id="salary"
-                           value="{{ old('salary') }}"
-                           required
-                    >
-
-                    @error('salary')
-                    <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-                    @enderror
-                </div>
-                <div class="mb-6">
-                    <label class="block mb-2 uppercase font-bold text-xs text-gray-700"
-                           for="location"
-                    >
-                        Location
-                    </label>
-
-                    <input class="border border-gray-400 p-2 w-full"
-                           type="text"
-                           name="location"
-                           id="location"
-                           value="{{ old('location') }}"
-                           required
-                    >
-
-                    @error('location')
-                    <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <div class="mb-6">
-                    <label class="block mb-2 uppercase font-bold text-xs text-gray-700"
-                           for="slug"
-                    >
-                        Slug
-                    </label>
-
-                    <input class="border border-gray-400 p-2 w-full"
-                           type="text"
-                           name="slug"
-                           id="slug"
-                           value="{{ old('slug') }}"
-                           required
-                    >
-
-                    @error('slug')
-                    <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-                    @enderror
-                </div>
+                <x-form.input name="title" />
+                <x-form.input name="slug" />
+                <x-form.input name="thumbnail" type="file" />
+                <x-form.input name="location" />
+                <x-form.input name="salary" />
+                <x-form.textarea name="short_description" />
+                <x-form.textarea name="full_description" />
 
 
-                <div class="mb-6">
-                    <label class="block mb-2 uppercase font-bold text-xs text-gray-700"
-                           for="excerpt"
-                    >
-                        Short Description
-                    </label>
 
-                    <textarea class="border border-gray-400 p-2 w-full"
-                              name="short_description"
-                              id="short_description"
-                              required
-                    >{{ old('short_description') }}</textarea>
-
-                    @error('short_description')
-                    <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <div class="mb-6">
-                    <label class="block mb-2 uppercase font-bold text-xs text-gray-700"
-                           for="full_description"
-                    >
-                        Body
-                    </label>
-
-                    <textarea class="border border-gray-400 p-2 w-full"
-                              name="full_description"
-                              id="full_description"
-                              required
-                    >{{ old('full_description') }}</textarea>
-
-                    @error('full_description')
-                    <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <div class="mb-6">
-                    <label class="block mb-2 uppercase font-bold text-xs text-gray-700"
-                           for="category_id"
-                    >
-                        Category
-                    </label>
+                <x-form.field>
+                    <x-form.label name="category" />
                     @php
                         $categories = \App\Models\Category::all();
                     @endphp
@@ -143,57 +33,32 @@
                         @endforeach
                     </select>
 
-                    @error('category')
-                    <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-                    @enderror
-                </div>
+                    <x-form.error name="category" />
+                </x-form.field>
 
-                <div class="mb-6">
-                    <label class="block mb-2 uppercase font-bold text-xs text-gray-700"
-                           for="company_id"
-                    >
-                        Company
-                    </label>
+                <x-form.field>
+                    <x-form.label name="company" />
                     @php
                         $companies = \App\Models\Company::all();
                     @endphp
 
 
-                    <select name="company_id" id="category_id">
+                    <select name="company_id" id="company_id">
                         @foreach ($companies as $company)
                             <option
                                 value="{{ $company->id }}"
-{{--                                in our loop if the old company id is equal to the old company id make that--}}
-{{--                                the selected value in the dropdown--}}
-                                {{ old('company_id') == $category->id ? 'selected' : '' }}
+                                {{ old('company_id') == $company->id ? 'selected' : '' }}
                             >{{ ucwords($company->name) }}</option>
                         @endforeach
                     </select>
 
-                    @error('category')
-                    <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-                    @enderror
-                </div>
-                <div class="mb-6">
-                    <label class="block mb-2 uppercase font-bold text-xs text-gray-700"
-                           for="thumbnail"
-                    >
-                        Company Thumbnail
-                    </label>
+                    <x-form.error name="company" />
+                </x-form.field>
 
-                    <input class="border border-gray-400 p-2 w-full"
-                           type="file"
-                           name="thumbnail"
-                           id="thumbnail"
-                           required
-                    >
 
-                    @error('thumbnail')
-                    <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-                    @enderror
-                </div>
 
-                <x-submit-button>Publish</x-submit-button>
+
+                <x-form.button>Post Job</x-form.button>
             </form>
         </x-panel>
     </section>
