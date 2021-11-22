@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Company;
@@ -35,6 +35,36 @@ class JobController extends Controller
         return view('jobs.show', [
             'job' => $job
         ]);
+    }
+
+
+// show a form to create a job
+
+    public function create()
+    {
+        return view('jobs.create');
+    }
+
+    public function store()
+    {
+//        dd(request()->all());
+        $attributes = request()->validate([
+            'title' => 'required',
+            'slug' => ['required', Rule::unique('jobs', 'slug')], //slug entered has to be unique. cannot exist already
+            'short_description' => 'required',
+            'full_description' => 'required',
+            'salary' => 'required',
+            'location' => 'required',
+            'category_id' => ['required', Rule::exists('categories', 'id')], //catgeory id must exist in our db
+            'company_id' => ['required', Rule::exists('companies', 'id')]
+
+        ]);
+
+        $attributes['user_id'] = auth()->id();
+
+        Job::create($attributes);
+
+        return redirect('/jobs');
     }
 
 }
