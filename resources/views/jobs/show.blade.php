@@ -18,7 +18,8 @@
 
 
                 <div class="flex items-center lg:justify-center text-sm mt-4">
-{{--                    <img src="/images/lary-avatar.svg" alt="Lary avatar">--}}
+                    <img src="{{ asset('storage/' . $job->thumbnail) }}" alt="" class="rounded-xl">
+
                     <div class="ml-3 text-left">
                         <h5 class="font-bold">Posted By: {{$job->company->name}}</h5>
 

@@ -50,6 +50,7 @@ class JobController extends Controller
 //        dd(request()->all());
         $attributes = request()->validate([
             'title' => 'required',
+            'thumbnail' => 'required|image',
             'slug' => ['required', Rule::unique('jobs', 'slug')], //slug entered has to be unique. cannot exist already
             'short_description' => 'required',
             'full_description' => 'required',
@@ -59,6 +60,9 @@ class JobController extends Controller
             'company_id' => ['required', Rule::exists('companies', 'id')]
 
         ]);
+        //this will return a path to where the thumbnail was stored
+        $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
+
 
         $attributes['user_id'] = auth()->id();
 

@@ -21,6 +21,7 @@ class CreateJobsTable extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('slug')->unique();
             $table->string('title');
+            $table->string('thumbnail')->nullable();   //contains the path to the thumbnail
             $table->text('short_description');
             $table->text('full_description');
             $table->string('salary');
