@@ -18,16 +18,25 @@
 
 
             @auth
-                <span class="text-xs font-bold uppercase">Welcome, {{ auth()->user()->name }}!</span>
+                <x-dropdown>
+                    <x-slot name="trigger">
+                        <button class="text-xs font-bold uppercase">Welcome, {{ auth()->user()->name }}!</button>
+                    </x-slot>
 
-                <form method="POST" action="/logout" class="text-xs font-semibold text-blue-500 ml-6">
-                    @csrf
-
-                    <button type="submit">Log Out</button>
-                </form>
+                    <x-dropdown-item href="/admin/dashboard">Dashboard</x-dropdown-item>
+                    <x-dropdown-item href="/admin/jobs/create" :active="request()->is('admin/jobs/create')">Post new Job</x-dropdown-item>
+{{--                    dropdown item accept a prop to set to active--}}
+                    <x-dropdown-item href="#" x-data="{}" @click.prevent="document.querySelector('#logout-form').submit()">Log Out</x-dropdown-item>
+{{--                    when you click this dropdown ite href=# meaning we wont go anywhere. onclik prevent the default action--}}
+{{--                    find the logout for with query selector(form id is logout form) and submit it to the logout route--}}
+{{--                    x-data{} is alpine component--}}
+                    <form id="logout-form" method="POST" action="/logout" class="hidden">
+                        @csrf
+                    </form>
+                </x-dropdown>
             @else
-                <a href="/register" class="text-xs font-bold uppercase">Register</a>
-                <a href="/login" class="ml-6 text-xs font-bold uppercase">Log In</a>
+                <a href="/register" class="text-xs font-bold uppercase {{ request()->is('register') ? 'text-blue-500' : '' }}">Register</a>
+                <a href="/login" class="ml-6 text-xs font-bold uppercase {{ request()->is('login') ? 'text-blue-500' : '' }}">Log In</a>
             @endauth
 
             <a href="/jobs" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
