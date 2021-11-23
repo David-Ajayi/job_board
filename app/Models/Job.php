@@ -10,7 +10,7 @@ class Job extends Model
     use HasFactory;
 
     protected $guarded = [];
-    protected $with = ['category', 'company'];
+//    protected $with = ['category', 'user'];
 //Jobs:: newQuery()-> filter  build up a query and the call what is after scope. In this case Filter
 //    public function scopeFilter($query, array $filters)
 //    {
@@ -58,9 +58,10 @@ class Job extends Model
         );
 
 
-        $query->when($filters['company'] ?? false, fn($query, $company) =>
-        $query->whereHas('company', fn ($query) =>
-        $query->where('name', $company)
+        $query->when($filters['company'] ?? false, fn($query, $user) =>
+        $query->whereHas('user', fn ($query) =>
+        //above is calling the method user on jobs
+        $query->where('company', $user)
         )
         );
 
@@ -96,7 +97,7 @@ class Job extends Model
 //
 //
 //    }
-    public function company()
+    public function user()
     {
 
         return $this-> belongsTo(User::class);
