@@ -18,7 +18,7 @@ class JobFactory extends Factory
     public function definition()
     {
         return [
-            'company_id' => Company::factory(),
+//            'company_id' => Company::factory(),
             'category_id' => Category::factory(),
             'user_id' => User::factory(),
             'title' => $this->faker->jobTitle(),

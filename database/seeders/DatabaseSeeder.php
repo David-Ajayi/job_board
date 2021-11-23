@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Category;
-use App\Models\Company;
+use App\Models\User;
 use App\Models\Job;
 
 class DatabaseSeeder extends Seeder
@@ -19,15 +19,20 @@ class DatabaseSeeder extends Seeder
 //Company::truncate();
 //Job::truncate();
 //Category::truncate();
+//
+//        $company =  Company::factory()->create([
+//           'name' => 'Acme Solutions'
+//
+//        ]);
 
-        $company =  Company::factory()->create([
-           'name' => 'Acme Solutions'
+                $user =  User::factory()->create([
+           'company' => 'Acme Solutions'
 
         ]);
 
         Job::factory(5)->create([
 
-                'company_id' => $company->id
+                'user_id' => $user->id
 //                 overidding the company id in the factory with the company created above 'acme'
 
 
