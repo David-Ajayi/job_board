@@ -5,6 +5,7 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\JobCommentsController;
+use App\Http\Controllers\AdminJobController;
 
 
 use App\Models\Job;
@@ -87,6 +88,14 @@ Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth'
 Route::post('jobs/{job:slug}/comments', [JobCommentsController::class, 'store']);
 
 
-Route::get('admin/jobs/create', [JobController::class, 'create'])->middleware('admin');;
-Route::post('admin/jobs', [JobController::class, 'store'])->middleware('admin');
+//Route::get('admin/jobs/create', [JobController::class, 'create'])->middleware('admin');;
+//Route::post('admin/jobs', [JobController::class, 'store'])->middleware('admin');
 
+Route::get('admin/jobs/create', [AdminJobController::class, 'create'])->middleware('admin');
+Route::get('admin/jobs', [AdminJobController::class, 'index'])->middleware('admin');
+
+Route::get('admin/jobs/{job}/edit', [AdminJobController::class, 'edit'])->middleware('admin');
+
+Route::patch('admin/jobs/{job}', [AdminJobController::class, 'update'])->middleware('admin');
+
+Route::delete('admin/jobs/{job}', [AdminJobController::class, 'destroy'])->middleware('admin');
