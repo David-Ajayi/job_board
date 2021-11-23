@@ -26,6 +26,7 @@ class RegisterController extends Controller
 
             'name' => ['required','min:2','max:255',Rule::unique('users','name')],
             'username' => ['required','min:2','max:255',Rule::unique('users','username')],
+            'company' => 'required|min:7|max:255',
 
             'email' => ['required','email','max:255',Rule::unique('companies','email')],
             'password' => 'required|min:7|max:255',
