@@ -9,6 +9,7 @@
             <x-form.input name="slug" :value="old('slug', $job->slug)" required />
             <x-form.input name="salary" :value="old('slug', $job->salary)" required />
             <x-form.input name="location" :value="old('slug', $job->location)" required />
+            <x-form.input name="company" :value="old('company', $job->user->company)" disabled />
 
             <div class="flex mt-6">
                 <div class="flex-1">
@@ -32,14 +33,14 @@
                         >{{ ucwords($category->name) }}</option>
                     @endforeach
                 </select>
-                <select name="company_id" id="company_id" required>
-                    @foreach (\App\Models\Company::all() as $company)
-                        <option
-                            value="{{ $company->id }}"
-                            {{ old('company_id', $job->company_id) == $job->id ? 'selected' : '' }}
-                        >{{ ucwords($company->name) }}</option>
-                    @endforeach
-                </select>
+{{--                <select name="company_id" id="company_id" required>--}}
+{{--                    @foreach (\App\Models\Company::all() as $company)--}}
+{{--                        <option--}}
+{{--                            value="{{ $company->id }}"--}}
+{{--                            {{ old('company_id', $job->company_id) == $job->id ? 'selected' : '' }}--}}
+{{--                        >{{ ucwords($company->name) }}</option>--}}
+{{--                    @endforeach--}}
+{{--                </select>--}}
 
                 <x-form.error name="category"/>
             </x-form.field>
