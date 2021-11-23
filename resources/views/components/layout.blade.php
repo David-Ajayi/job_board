@@ -23,7 +23,7 @@
                         <button class="text-xs font-bold uppercase">Welcome, {{ auth()->user()->name }}!</button>
                     </x-slot>
 
-                    <x-dropdown-item href="/admin/dashboard">Dashboard</x-dropdown-item>
+                    <x-dropdown-item href="/admin/jobs" :active="request()->is('admin/jobs')">Manage All Jobs</x-dropdown-item>
                     <x-dropdown-item href="/admin/jobs/create" :active="request()->is('admin/jobs/create')">Post new Job</x-dropdown-item>
 {{--                    dropdown item accept a prop to set to active--}}
                     <x-dropdown-item href="#" x-data="{}" @click.prevent="document.querySelector('#logout-form').submit()">Log Out</x-dropdown-item>

@@ -42,7 +42,7 @@ class JobController extends Controller
 
     public function create()
     {
-        return view('jobs.create');
+        return view('admin.jobs.create');
     }
 
     public function store()
@@ -62,6 +62,8 @@ class JobController extends Controller
         ]);
         //this will return a path to where the thumbnail was stored
         $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
+
+
 
 
         $attributes['user_id'] = auth()->id();
