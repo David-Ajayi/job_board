@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Company;
 use App\Models\Job;
+use App\Models\User;
 
 class JobController extends Controller
 {
@@ -15,18 +16,20 @@ class JobController extends Controller
         return view('home', [
 //            'jobs' => Job::all(),
             'jobs' => Job::latest()->filter(request(['search']))->get(),
-            'categories' => Category::all()
+            'categories' => Category::all(),
+            'user' => User::all(),
         ]);
     }
     public function index()
     {
-//        dd(request(['search']));
+//        dd(request(['company']));
         return view('jobs.index', [
 //            'jobs' => Job::all(),
-            'jobs' => Job::latest()->filter(request(['search', 'category', 'company']))->paginate(3)->withQueryString()
+            'jobs' => Job::latest()->filter(request(['search', 'category', 'company']))->paginate(3)->withQueryString(),
+//            'jobs' => Job::latest()->filter(request(['search', 'category', 'company']))->paginate(3)->withQueryString()
 
 
-//            'categories' => Category::all()
+            'user' => User::all()
         ]);
     }
 
