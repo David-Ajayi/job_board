@@ -21,7 +21,7 @@
                     <img src="{{ asset('storage/' . $job->thumbnail) }}" alt="" class="rounded-xl">
 
                     <div class="ml-3 text-left">
-                        <h5 class="font-bold">Posted By: {{$job->company->name}}</h5>
+                        <h5 class="font-bold">Posted By: {{$job->user->company}}</h5>
 
                     </div>
                 </div>

@@ -12,7 +12,8 @@ class AdminJobController extends Controller
     public function index()
     {
         return view('admin.jobs.index', [
-            'jobs' => Job::paginate(3)
+            'jobs' => Job::paginate(5)
+//            'jobs' => Job::paginate(3)
         ]);
     }
 
@@ -32,8 +33,8 @@ class AdminJobController extends Controller
             'full_description' => 'required',
             'salary' => 'required',
             'location' => 'required',
-            'category_id' => ['required', Rule::exists('categories', 'id')], //catgeory id must exist in our db
-            'company_id' => ['required', Rule::exists('companies', 'id')]
+            'category_id' => ['required', Rule::exists('categories', 'id')], //category id must exist in our db
+//            'company_id' => ['required', Rule::exists('companies', 'id')]
 
         ]);
         //this will return a path to where the thumbnail was stored
@@ -67,7 +68,7 @@ class AdminJobController extends Controller
             'salary' => 'required',
             'location' => 'required',
             'category_id' => ['required', Rule::exists('categories', 'id')],
-            'company_id' => ['required', Rule::exists('companies', 'id')]
+//            'company_id' => ['required', Rule::exists('companies', 'id')]
 
         ]);
 
