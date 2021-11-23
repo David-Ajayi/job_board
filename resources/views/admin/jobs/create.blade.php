@@ -44,14 +44,14 @@
                     @endphp
 
 
-                    <select name="company_id" id="company_id">
-                        @foreach ($companies as $company)
-                            <option
-                                value="{{ $company->id }}"
-                                {{ old('company_id') == $company->id ? 'selected' : '' }}
-                            >{{ ucwords($company->name) }}</option>
-                        @endforeach
-                    </select>
+{{--                    <select name="company_id" id="company_id">--}}
+{{--                        @foreach ($companies as $company)--}}
+{{--                            <option--}}
+{{--                                value="{{ $company->id }}"--}}
+{{--                                {{ old('company_id') == $company->id ? 'selected' : '' }}--}}
+{{--                            >{{ ucwords($company->name) }}</option>--}}
+{{--                        @endforeach--}}
+{{--                    </select>--}}
 
                     <x-form.error name="company" />
                 </x-form.field>
