@@ -1,10 +1,11 @@
 <x-layout>
+    <x-setting heading="Post a new Job">
     <section class="py-8 max-w-md mx-auto">
         <h1 class="text-lg font-bold mb-4">
             Post a New Job
         </h1>
 
-        <x-panel>
+{{--        <x-panel>--}}
             <form method="POST" action="/admin/jobs" enctype="multipart/form-data">
                 @csrf
                 <x-form.input name="title" />
@@ -60,6 +61,7 @@
 
                 <x-form.button>Post Job</x-form.button>
             </form>
-        </x-panel>
+{{--        </x-panel>--}}
     </section>
+    </x-setting>
 </x-layout>
