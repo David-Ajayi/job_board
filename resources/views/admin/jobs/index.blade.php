@@ -33,9 +33,12 @@
                                 </td>
                             </tr>
                         @endforeach
+
                         </tbody>
                     </table>
+
                 </div>
+                {{ $jobs->links() }}
             </div>
         </div>
     </div>

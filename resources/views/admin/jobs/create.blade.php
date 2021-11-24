@@ -37,24 +37,6 @@
                     <x-form.error name="category" />
                 </x-form.field>
 
-                <x-form.field>
-                    <x-form.label name="company" />
-                    @php
-                        $companies = \App\Models\Company::all();
-                    @endphp
-
-
-{{--                    <select name="company_id" id="company_id">--}}
-{{--                        @foreach ($companies as $company)--}}
-{{--                            <option--}}
-{{--                                value="{{ $company->id }}"--}}
-{{--                                {{ old('company_id') == $company->id ? 'selected' : '' }}--}}
-{{--                            >{{ ucwords($company->name) }}</option>--}}
-{{--                        @endforeach--}}
-{{--                    </select>--}}
-
-                    <x-form.error name="company" />
-                </x-form.field>
 
 
 

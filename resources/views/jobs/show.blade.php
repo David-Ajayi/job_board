@@ -23,6 +23,7 @@
                     <div class="ml-3 text-left">
                         <h5 class="font-bold">Posted By: {{$job->user->company}}</h5>
 
+
                     </div>
                 </div>
             </div>

@@ -89,13 +89,13 @@ Route::post('jobs/{job:slug}/comments', [JobCommentsController::class, 'store'])
 
 
 //Route::get('admin/jobs/create', [JobController::class, 'create'])->middleware('admin');;
-//Route::post('admin/jobs', [JobController::class, 'store'])->middleware('admin');
+Route::post('admin/jobs', [AdminJobController::class, 'store'])->middleware('can:admin');
 
-Route::get('admin/jobs/create', [AdminJobController::class, 'create'])->middleware('admin');
-Route::get('admin/jobs', [AdminJobController::class, 'index'])->middleware('admin');
+Route::get('admin/jobs/create', [AdminJobController::class, 'create'])->middleware('can:admin');
+Route::get('admin/jobs', [AdminJobController::class, 'index'])->middleware('can:admin');
 
-Route::get('admin/jobs/{job}/edit', [AdminJobController::class, 'edit'])->middleware('admin');
+Route::get('admin/jobs/{job}/edit', [AdminJobController::class, 'edit'])->middleware('can:admin');
 
-Route::patch('admin/jobs/{job}', [AdminJobController::class, 'update'])->middleware('admin');
+Route::patch('admin/jobs/{job}', [AdminJobController::class, 'update'])->middleware('can:admin');
 
-Route::delete('admin/jobs/{job}', [AdminJobController::class, 'destroy'])->middleware('admin');
+Route::delete('admin/jobs/{job}', [AdminJobController::class, 'destroy'])->middleware('can:admin');
