@@ -50,7 +50,16 @@
                     <div class="ml-3">
                         <h5 class="font-bold">Location : {{$job->location}}</h5>
 {{--                        <h6 class="font-bold">Company: <a href="jobs/?company={{$job->user->company}}">{{$job->user->company}}</a></h6>--}}
-                        <h6 class="font-bold">Company: <a href="jobs/?company={{$job->user->company}}">{{$job->user->company}}</a></h6>
+
+                        <h6
+                        @if (request('company'))
+
+                            class="font-bold">Company: <a href="?company={{$job->user->company}}">{{$job->user->company}}</a>
+                            @else
+                            class="font-bold">Company: <a href="jobs/?company={{$job->user->company}}">{{$job->user->company}}</a>
+                            @endif
+
+                        </h6>
 
                     </div>
                 </div>
