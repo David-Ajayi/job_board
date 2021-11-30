@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Bookmark;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use App\Models\Category;
@@ -29,7 +30,9 @@ class JobController extends Controller
 //            'jobs' => Job::latest()->filter(request(['search', 'category', 'company']))->paginate(3)->withQueryString()
 
 
-            'user' => User::all()
+            'user' => User::all(),
+
+            'bookmarks' => Bookmark::all()
         ]);
     }
 
