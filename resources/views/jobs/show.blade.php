@@ -47,13 +47,14 @@
 
                     <div class="space-x-2">
                         <x-category-button :category="$job->category" />
-                        <form method="POST" action="/bookmarks/{{$job->id}}" >
-                            @csrf
+{{--                        <form method="POST" action="/bookmarks/{{$job->id}}" >--}}
+{{--                            @csrf--}}
 
-                            <input type="hidden" name="bookmark" value="0" onClick="this.form.submit()"/>
-                            <input type="checkbox" name="bookmark" value="1" onClick="this.form.submit()" />
+{{--                            <input type="hidden" name="bookmark" value="0" onClick="this.form.submit()"/>--}}
+{{--                            <input type="checkbox" name="bookmark" value="1" onClick="this.form.submit()" />--}}
 
-                        </form>
+{{--                        </form>--}}
+                        <x-bookmark :job="$job"/>
 
                     </div>
                 </div>
