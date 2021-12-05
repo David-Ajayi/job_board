@@ -6,6 +6,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\JobCommentsController;
 use App\Http\Controllers\AdminJobController;
+use App\Http\Controllers\BookmarkController;
 
 
 use App\Models\Job;
@@ -99,3 +100,10 @@ Route::get('admin/jobs/{job}/edit', [AdminJobController::class, 'edit'])->middle
 Route::patch('admin/jobs/{job}', [AdminJobController::class, 'update'])->middleware('can:admin');
 
 Route::delete('admin/jobs/{job}', [AdminJobController::class, 'destroy'])->middleware('can:admin');
+
+
+Route::post('bookmarks/{job}/', [BookmarkController::class, 'store']);
+
+Route::get('bookmarks', [BookmarkController::class, 'show']);
+
+Route::delete('bookmarks/delete/{bookmark}', [BookmarkController::class, 'delete']);

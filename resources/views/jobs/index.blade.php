@@ -23,17 +23,23 @@
         @endif
 
 
-
         <div class="lg:grid lg:grid-cols-2">
 {{--            <x-grid-card/>--}}
 {{--            <x-grid-card/>--}}
 
 
-
         </div>
 
         <div class="lg:grid lg:grid-cols-3">
-{{--            <x-grid-card/>--}}
+            @foreach($bookmarks as $bookmark)
+{{--                                <p>{{$bookmark}}</p>--}}
+
+
+
+
+            @endforeach
+
+            {{--            <x-grid-card/>--}}
 
 
 

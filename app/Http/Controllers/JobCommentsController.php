@@ -14,9 +14,10 @@ class JobCommentsController extends Controller
             'body' => 'required'
         ]);
 //         dd(request()->all());
-       //  dd($job);
+//                 dd(request());
+         dd($job);
 
-        //passing throught the job as $job will automattically set the job id for the comment
+        //passing through the job as $job will automatically set the job id for the comment
         $job->comments()->create([
             'user_id' => request()->user()->id,
             'body' => request('body'),

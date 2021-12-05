@@ -30,8 +30,7 @@
                                     </td>
 
                                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                        <form method="POST" action=#">
-{{--                                            "/bookmarks/{{ $bookmark->job->id }}--}}
+                                        <form method="POST" action="/bookmarks/delete/{{$bookmark->id}}">
                                             @csrf
                                             @method('DELETE')
                                             {{--                                        delete request--}}

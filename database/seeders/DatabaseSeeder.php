@@ -6,6 +6,8 @@ use Illuminate\Database\Seeder;
 use App\Models\Category;
 use App\Models\User;
 use App\Models\Job;
+use App\Models\Comment;
+use App\Models\Bookmark;
 
 class DatabaseSeeder extends Seeder
 {
@@ -30,6 +32,7 @@ class DatabaseSeeder extends Seeder
 
         ]);
 
+
         Job::factory(5)->create([
 
                 'user_id' => $user->id
@@ -37,6 +40,22 @@ class DatabaseSeeder extends Seeder
 
 
         ]);
+
+
+
+        Comment::factory()->create([
+            'user_id' => $user->id,
+            'job_id' => 1
+
+        ]);
+
+        Bookmark::factory()->create([
+            'user_id' => $user->id,
+            'job_id' => 1
+
+        ]);
+
+
 
     }
 }

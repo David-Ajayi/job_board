@@ -107,5 +107,12 @@ class Job extends Model
 
     }
 
+    public function bookmark()
+    {
+
+        return $this-> hasMany(Bookmark::class);
+
+    }
+
 
 }

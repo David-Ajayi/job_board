@@ -82,8 +82,16 @@ class BookmarkController extends Controller
 
 
 
-    public function delete()
+    public function delete(Bookmark $bookmark)
     {
+
+
+        Bookmark::where('id', $bookmark->id)->delete();
+
+
+
+
+        return back()->with('success', 'Your bookmark has been deleted' );
 
 
 
