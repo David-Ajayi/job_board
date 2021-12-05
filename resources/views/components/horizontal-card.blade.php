@@ -15,8 +15,9 @@
             <header class="mt-8 lg:mt-0">
                 <div class="space-x-2">
 
-                  <x-category-button :category="$job->category" />
+                  <x-category-button :category="$job->category"/>
                     <x-bookmark :job="$job"/>
+
 
 
 {{--                    <a href="#"--}}
