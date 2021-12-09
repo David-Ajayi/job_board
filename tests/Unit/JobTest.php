@@ -50,10 +50,7 @@ class JobTest extends TestCase
         $category = Category::first();
         $user = User::first();
 
-        Job::create(['title' => 'Site Supervisor',
-            'category_id' => $category->id ,'user_id' => $user->id, 'short_description' => 'a short description',
-            'full_description' => 'full description', 'salary' => '£50,000',
-            'location' => 'london', 'slug' => 'atestslug'
+        Job::factory()->create(['category_id' => $category->id ,'user_id' => $user->id,  'slug' => 'atestslug'
         ]);
 
 
@@ -70,7 +67,7 @@ class JobTest extends TestCase
 
     }
 
-    
+
 
 
 }

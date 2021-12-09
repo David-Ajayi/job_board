@@ -79,4 +79,6 @@ class JobController extends Controller
         return redirect('/jobs');
     }
 
+
+
 }

@@ -34,10 +34,10 @@ class Job extends Model
         );
 
 
-        $query->when($filters['company'] ?? false, fn($query, $user) =>
+        $query->when($filters['company'] ?? false, fn($query, $company) =>
         $query->whereHas('user', fn ($query) =>
         //above is calling the method user on jobs
-        $query->where('company', $user)
+        $query->where('company', $company)
         )
         );
 
@@ -81,6 +81,12 @@ class Job extends Model
         return $this-> hasMany(Bookmark::class);
 
     }
+
+    public function commentCount(){
+
+        return $this->comments()->count();
+    }
+
 
 
 }

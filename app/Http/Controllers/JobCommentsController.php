@@ -15,7 +15,7 @@ class JobCommentsController extends Controller
         ]);
 //         dd(request()->all());
 //                 dd(request());
-         dd($job);
+//         dd($job);
 
         //passing through the job as $job will automatically set the job id for the comment
         $job->comments()->create([
@@ -26,5 +26,12 @@ class JobCommentsController extends Controller
 
         return back();
     }
+
+
+
+
+
+
+
 
 }
