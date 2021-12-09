@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Job extends Model
 {
@@ -85,6 +86,46 @@ class Job extends Model
     public function commentCount(){
 
         return $this->comments()->count();
+    }
+
+
+    public function setBookmark()
+   {
+       $bookmark = new Bookmark(['user_id' => Auth::id()]);
+       $this->bookmark()->save($bookmark);
+
+   }
+
+
+    public function isBookmarked()
+    {
+        return !! $this->bookmark()->where('user_id', Auth::id())->count();
+        //return boolean from this
+
+    }
+
+
+
+
+    public function removeBookmark()
+    {
+
+        $this->bookmark()->where('user_id', Auth::id())->delete();
+
+
+    }
+
+    public function toggle()
+    {
+        if($this->isBookmarked())
+        {
+            return $this->removeBookmark();
+        }else {
+
+            return $this->setBookmark();
+        }
+
+
     }
 
 
