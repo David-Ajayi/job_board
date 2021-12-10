@@ -15,7 +15,7 @@ use Database\Seeders\JobWithUserAndCategorySeeder;
 use Tests\TestCase;
 use Illuminate\Support\Facades\DB;
 
-class BookmarksTestTest extends TestCase
+class BookmarksTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -26,7 +26,7 @@ class BookmarksTestTest extends TestCase
       $job = Job::factory()->create();
       $user = User::factory()->create();
       $this->actingAs($user);
-      $job->bookmark()->create([
+      $job->bookmarks()->create([
           'user_id' => $user->id,
           'job_id' => $job->id
 
@@ -42,18 +42,19 @@ class BookmarksTestTest extends TestCase
         $job = Job::factory()->create();
         $user = User::factory()->create();
         $this->actingAs($user);
-        $job->bookmark()->create([
+        $job->bookmarks()->create([
             'user_id' => $user->id,
             'job_id' => $job->id
 
         ]);
 
-        $job->setBookmark();
+//        $job->setBookmark();
 
-//        dd($job->isBookmarked());
+
         $this->assertTrue($job->isBookmarked());
 
         $job->removeBookmark();
+//        dd($job->isBookmarked());
 
         $this->assertFalse($job->isBookmarked());
 
@@ -67,7 +68,7 @@ class BookmarksTestTest extends TestCase
         $user = User::factory()->create();
         $this->actingAs($user);
 
-//             dd($job->isBookmarked());
+//             dd($job->isBookmarked()->count());
 
         $job->toggle();
 
@@ -79,6 +80,30 @@ class BookmarksTestTest extends TestCase
 
 
       }
+
+//    /** @test */
+//    public function isBookmarked_return_all_job_bookmarked_by_user()
+//    {
+//        $job = Job::factory()->create();
+//        $user = User::factory()->create();
+//        $this->actingAs($user);
+//        $job->setBookmark();
+//        $job2 = Job::factory()->create();
+//        $job2->setBookmark();
+//        $job3 = Job::factory()->create();
+//        $job3->setBookmark();
+//
+//        // I want a collection of all the jobs this user has bookmarked
+//
+//
+//
+//
+//
+//        $this->assertEquals($job->isBookmarked()[0], 1);
+//
+//
+//
+//    }
 
 
 
