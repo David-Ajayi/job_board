@@ -1,4 +1,4 @@
-@props(['job'])
+@props(['job', 'userBookmarks'])
 
 
 
@@ -16,7 +16,7 @@
                 <div class="space-x-2">
 
                   <x-category-button :category="$job->category"/>
-                    <x-bookmark :job="$job"/>
+                    <x-bookmark :job="$job" :userBookmarks="$userBookmarks"/>
 
 
 

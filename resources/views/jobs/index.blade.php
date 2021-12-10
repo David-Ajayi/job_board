@@ -5,9 +5,12 @@
 
 
     <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
+{{--        <textarea>input{{$userBookmarks[0]}}</textarea>--}}
         @if($jobs->count()!==0)
         @foreach($jobs as $job)
-        <x-horizontal-card :job="$job"/>
+        <x-horizontal-card :job="$job" :userBookmarks="$userBookmarks"/>
+{{--                :userBookmarks="$userBookmarks"--}}
+
 
 
 
@@ -24,6 +27,7 @@
 
 
         <div class="lg:grid lg:grid-cols-2">
+
 {{--            <x-grid-card/>--}}
 {{--            <x-grid-card/>--}}
 
