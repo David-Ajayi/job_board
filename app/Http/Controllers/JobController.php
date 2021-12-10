@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Company;
 use App\Models\Job;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class JobController extends Controller
 {
@@ -30,10 +31,12 @@ class JobController extends Controller
 //            'jobs' => Job::latest()->filter(request(['search', 'category', 'company']))->paginate(3)->withQueryString()
 
 
-            'user' => User::all(),
-
-            'bookmarks' => Bookmark::all()
+            'bookmarks' => Bookmark::all(),
+        'userBookmarks'=> Bookmark::where('user_id', Auth::id())->pluck('job_id')
+//        dd(  Bookmark::where('user_id', Auth::id())->pluck('job_id'))
+//            dd(  Bookmark::all())
         ]);
+
     }
 
     public function show(Job $job)

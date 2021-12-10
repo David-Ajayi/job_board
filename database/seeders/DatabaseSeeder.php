@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
            'email' => 'david@email.com',
 
 
+
         ]);
 
 

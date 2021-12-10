@@ -76,7 +76,7 @@ class Job extends Model
 
     }
 
-    public function bookmark()
+    public function bookmarks()
     {
 
         return $this-> hasMany(Bookmark::class);
@@ -92,17 +92,28 @@ class Job extends Model
     public function setBookmark()
    {
        $bookmark = new Bookmark(['user_id' => Auth::id()]);
-       $this->bookmark()->save($bookmark);
+       $this->bookmarks()->save($bookmark);
 
    }
 
 
     public function isBookmarked()
     {
-        return !! $this->bookmark()->where('user_id', Auth::id())->count();
+//        return $this->bookmarks()->where('user_id', Auth::id())->exists();
+        return  !! $this->bookmarks()->where('user_id', Auth::id())->count();
         //return boolean from this
 
     }
+
+//
+//    public function isBookmarked()
+//    {
+//
+//        return Bookmark::where('user_id', Auth::id())->pluck('job_id', );
+//
+//
+//
+//    }
 
 
 
@@ -110,7 +121,7 @@ class Job extends Model
     public function removeBookmark()
     {
 
-        $this->bookmark()->where('user_id', Auth::id())->delete();
+        $this->bookmarks()->where('user_id', Auth::id())->delete();
 
 
     }
@@ -127,6 +138,8 @@ class Job extends Model
 
 
     }
+
+
 
 
 

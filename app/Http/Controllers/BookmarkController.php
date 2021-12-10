@@ -59,7 +59,7 @@ class BookmarkController extends Controller
             return redirect('/jobs')->with('success', 'Your bookmark has been removed' );
 
         }else{
-            $job->bookmark()->create([
+            $job->bookmarks()->create([
                'user_id' => $user_id
 
 
